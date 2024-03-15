@@ -5,7 +5,12 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from .logic.logica_cliente import crear_cliente
 from .logic.logica_informacion_financiera import crear_informacion_financiera
+from .models import Oferta, Solicitud, Cliente
+from .serializers import OfertaSerializer, ClienteSerializer, SolicitudSerializer
 import requests
+from rest_framework import viewsets, status
+from rest_framework.decorators import action
+from rest_framework.response import Response
 
 
 # def cliente_list(request):
@@ -50,6 +55,21 @@ def create_informacion_financiera(request):
     }
 
     return render(request, 'InformacionFinanciera/crearInformacionFinanciera.html', context)
+
+
+
+
+
+
+
+
+
+        
+        
+
+
+    
+
 
 # def presentarOfertas(request,pk):
 #     ofertasManejadorViabilidad = requests.get(url = "nkmsdnsdfl")

@@ -19,10 +19,10 @@ class Tarjeta(models.Model):
 class Oferta(models.Model):
     monto = models.DecimalField(max_digits=10, decimal_places=2)
     tipo = models.CharField(max_length=100)
-    monto = models.DecimalField(max_digits=10, decimal_places=2)
     tasa = models.DecimalField(max_digits=5, decimal_places=2)
     franquicia = models.CharField(max_length=100)
     descripcion = models.TextField()
+    solicitud = models.ForeignKey('Solicitud', on_delete=models.SET_NULL, null=True, blank=True, related_name = 'ofertas')
 
     def __str__(self):
         return str(self.tipo) + ' ' + self.monto
@@ -76,3 +76,8 @@ class InformacionFinanciera(models.Model):
         verbose_name = 'InformacionFinanciera'
         verbose_name_plural = 'InformacionFinanciera'
         ordering = ['ingresos']
+
+class Solicitud(models.Model):
+    estado = models.CharField(max_length=100)
+    cliente = models.ForeignKey('Cliente', on_delete=models.SET_NULL, null=True, blank=True, related_name= 'solicitudes')
+
