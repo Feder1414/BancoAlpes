@@ -6,8 +6,8 @@ class Tarjeta(models.Model):
     cvv = models.CharField(max_length=3)
     fecha_aceptacion = models.DateField()
     hora_aceptacion = models.TimeField()
-    oferta = models.ForeignKey('Oferta', on_delete=models.SET_NULL, null=True)
-    cliente = models.ForeignKey('Cliente', on_delete=models.SET_NULL, null=True)
+    oferta = models.ForeignKey('Oferta', on_delete=models.SET_NULL, null=True, blank=True)
+    cliente = models.ForeignKey('Cliente', on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):
         return self.numero
