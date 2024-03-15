@@ -43,7 +43,7 @@ class Cliente(models.Model):
     telefono = models.CharField(max_length=15)
     email = models.EmailField()
     fecha_nacimiento = models.DateField()
-    informacion_financiera = models.OneToOneField('InformacionFinanciera', on_delete=models.SET_NULL, null=True, blank=True)
+    #informacion_financiera = models.OneToOneField('InformacionFinanciera', on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):
         return self.nombre + ' ' + self.apellido
@@ -67,6 +67,7 @@ class InformacionFinanciera(models.Model):
     garantias = models.TextField(null=True, blank=True)
     tipo_vivienda = models.CharField(max_length=100)
     educacion = models.CharField(max_length=100)
+    cliente = models.OneToOneField('Cliente', on_delete=models.SET_NULL, null=True, blank=True)
     
 
     def __str__(self):
