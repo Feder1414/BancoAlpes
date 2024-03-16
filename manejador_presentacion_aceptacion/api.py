@@ -30,7 +30,11 @@ class SolicitudViewSet(viewsets.ModelViewSet):
         if not hasattr(solicitud.cliente, 'informacionfinanciera'):
             return Response({"error": "El usuario de esta solicitud no tiene información financiera asociada, no se le pueden presentar las ofertas"}, status=status.HTTP_400_BAD_REQUEST)
         
+        
+        
         informacionFinanciera = solicitud.cliente.informacionfinanciera
+        if (informacionFinanciera.ingresos < informacionFinanciera.egresos):
+            return Response({"error": "El usuario de esta solicitud no tiene los suficientes ingresos para cubrir sus egresos"}, status=status.HTTP_400_BAD_REQUEST)
         informacionFinancieraSerializada = InformacionFinancieraSerializer(informacionFinanciera)
         url = "http://127.0.0.1:8080/api/ofertas/generar-oferta/"
 
