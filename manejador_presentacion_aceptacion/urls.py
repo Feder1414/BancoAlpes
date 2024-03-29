@@ -14,7 +14,7 @@ router.register('api/informacionFinanciera', InformacionFinancieraViewSet, basen
 urlpatterns = [
     path('crearCliente/', csrf_exempt(create_cliente), name='createCliente'),
     path('crearInformacionFinanciera/', csrf_exempt(create_informacion_financiera), name='createInformacionFinanciera'),
-    path('healthcheck/', HealthCheck.as_view(), name='healthcheck'),
+    path('health-check/', HealthCheck.as_view(), name='health-check'),
     path('', include(router.urls))
 
 ]
