@@ -55,4 +55,4 @@ class ClienteSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Cliente
-        fields = ['nombre', 'apellido', 'direccion', 'ciudad', 'departamento', 'codigo_postal', 'pais', 'telefono', 'email', 'fecha_nacimiento', 'solicitudes', 'tarjetas', 'informacionfinanciera']
+        fields = ['id', 'nombre', 'apellido', 'direccion', 'ciudad', 'departamento', 'codigo_postal', 'pais', 'telefono', 'email', 'fecha_nacimiento', 'solicitudes', 'tarjetas', 'informacionfinanciera']
