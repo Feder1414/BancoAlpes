@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'manejador_presentacion_aceptacion'
+    'manejador_presentacion_aceptacion',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
