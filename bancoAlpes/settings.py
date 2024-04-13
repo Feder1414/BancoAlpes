@@ -82,7 +82,7 @@ DATABASES = {
         'NAME': 'banco_db',
         'USER': 'banco_user',
         'PASSWORD': 'isis2503',
-        'HOST': '10.128.0.2',  # or your PostgreSQL server's IP address
+        'HOST': '10.128.0.2',  # Or your PostgreSQL server's IP address
         'PORT': '',  # default PostgreSQL port
     }
 }
