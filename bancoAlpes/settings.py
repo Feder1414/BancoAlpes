@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-^c!prza)r7+&2cofpn+&%66-*c81_7wou7$2u=+ap4n*_s!5om
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -38,7 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'manejador_presentacion_aceptacion'
+    'manejador_presentacion_aceptacion',
+    'manejador_validacion',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
@@ -77,8 +79,12 @@ WSGI_APPLICATION = 'bancoAlpes.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'banco_db',
+        'USER': 'banco_user',
+        'PASSWORD': 'isis2503',
+        'HOST': '10.128.0.2',  # Or your PostgreSQL server's IP address
+        'PORT': '',  # default PostgreSQL port
     }
 }
 

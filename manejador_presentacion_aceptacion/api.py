@@ -36,7 +36,7 @@ class SolicitudViewSet(viewsets.ModelViewSet):
         if (informacionFinanciera.ingresos < informacionFinanciera.egresos):
             return Response({"error": "El usuario de esta solicitud no tiene los suficientes ingresos para cubrir sus egresos"}, status=status.HTTP_400_BAD_REQUEST)
         informacionFinancieraSerializada = InformacionFinancieraSerializer(informacionFinanciera)
-        url = "http://127.0.0.1:8080/api/ofertas/generar-oferta/"
+        url = "http://10.128.0.5:8080/api/ofertas/generar-oferta/"
 
         response = requests.post(url, informacionFinancieraSerializada.data)
         

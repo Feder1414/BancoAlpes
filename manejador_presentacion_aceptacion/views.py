@@ -11,6 +11,7 @@ import requests
 from rest_framework import viewsets, status
 from rest_framework.decorators import action
 from rest_framework.response import Response
+from rest_framework.views import APIView
 
 
 # def cliente_list(request):
@@ -56,6 +57,9 @@ def create_informacion_financiera(request):
 
     return render(request, 'InformacionFinanciera/crearInformacionFinanciera.html', context)
 
+class HealthCheck(APIView):
+    def get(self, request, format=None):
+        return Response({"status": "OK"}, status=status.HTTP_200_OK)
 
 
 
