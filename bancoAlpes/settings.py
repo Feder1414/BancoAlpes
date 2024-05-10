@@ -40,8 +40,38 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'manejador_presentacion_aceptacion',
     'manejador_validacion',
-    'rest_framework'
+    'rest_framework', 
+    'sslserver',
+    'moduloAutenticacion',
+    'rest_framework.authtoken',
+    
 ]
+
+# INSTALLED_APPS = [
+#     'django.contrib.admin',
+#     'django.contrib.auth',
+#     'django.contrib.contenttypes',
+#     'django.contrib.sessions',
+#     'django.contrib.messages',
+#     'django.contrib.staticfiles',
+#     'manejador_presentacion_aceptacion',
+#     'manejador_validacion',
+#     'rest_framework'
+#     'manejador_presentacion_aceptacion', 
+#     'sslserver',
+#     'rest_framework',
+#     'moduloAutenticacion',
+#     'rest_framework.authtoken',
+    
+# ]
+
+AUTH_USER_MODEL = 'moduloAutenticacion.User'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',  # Añade esto
+    ]
+    }
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -87,6 +117,18 @@ DATABASES = {
         'PORT': '',  # default PostgreSQL port
     }
 }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'basealpes',
+        'USER': 'usuario',
+        'PASSWORD': 'pepe',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
+
 
 
 # Password validation

@@ -1,4 +1,9 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
+from django.contrib.auth import get_user_model
+
+
+User = get_user_model()
 
 class Tarjeta(models.Model):
     numero = models.CharField(max_length=16)
@@ -41,13 +46,18 @@ class Cliente(models.Model):
     codigo_postal = models.CharField(max_length=10)
     pais = models.CharField(max_length=100)
     telefono = models.CharField(max_length=15)
+    documento = models.CharField(max_length=10) 
     email = models.EmailField()
     fecha_nacimiento = models.DateField()
+
     #informacion_financiera = models.OneToOneField('InformacionFinanciera', on_delete=models.SET_NULL, null=True, blank=True)
+    usuario = models.OneToOneField(User, on_delete=models.CASCADE, related_name='cliente')
 
     def __str__(self):
         return self.nombre + ' ' + self.apellido
     class Meta:
+        managed = False
+        db_table = 'cliente'
         verbose_name = 'Cliente'
         verbose_name_plural = 'Clientes'
         ordering = ['nombre']
@@ -67,6 +77,7 @@ class InformacionFinanciera(models.Model):
     garantias = models.TextField(null=True, blank=True)
     tipo_vivienda = models.CharField(max_length=100)
     educacion = models.CharField(max_length=100)
+    documento = models.CharField(max_length=10)
     cliente = models.OneToOneField('Cliente', on_delete=models.SET_NULL, null=True, blank=True)
     
 
@@ -81,3 +92,6 @@ class Solicitud(models.Model):
     estado = models.CharField(max_length=100)
     cliente = models.ForeignKey('Cliente', on_delete=models.SET_NULL, null=True, blank=True, related_name= 'solicitudes')
 
+
+
+#from manejador_validacion.logic.recievers import * # noqa
