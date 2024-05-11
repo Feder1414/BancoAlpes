@@ -8,6 +8,7 @@ from rest_framework.response import Response
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.views import APIView
 
 class SolicitudViewSet(viewsets.ModelViewSet):
     queryset = Solicitud.objects.all()
@@ -60,6 +61,16 @@ class SolicitudViewSet(viewsets.ModelViewSet):
 
 
         
+
+class SolicitudDocumento(APIView):
+    permission_classes = [IsAuthenticated]
+    def post(self, request, format=None):
+        documento = request.data.get('documento')
+        solicitudes = Solicitud.objects.filter(cliente__documento=documento)
+        if (solicitudes[0].cliente.usuario != request.user and request.user.rol != "asesor"):
+            return Response({"error": "No tiene permisos para ver las solicitudes de este usuario"}, status=status.HTTP_400_BAD_REQUEST)
+        serializer = SolicitudSerializer(solicitudes, many=True)
+        return Response(serializer.data)
 
 
 

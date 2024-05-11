@@ -1,6 +1,6 @@
 from django.urls import path, include
 from .views import  create_cliente, create_informacion_financiera
-from .api import SolicitudViewSet, ClienteViewSet, InformacionFinancieraViewSet
+from .api import SolicitudViewSet, ClienteViewSet, InformacionFinancieraViewSet, SolicitudDocumento
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.routers import DefaultRouter
 from .views import HealthCheck
@@ -15,6 +15,7 @@ urlpatterns = [
     path('crearCliente/', csrf_exempt(create_cliente), name='createCliente'),
     path('crearInformacionFinanciera/', csrf_exempt(create_informacion_financiera), name='createInformacionFinanciera'),
     path('health-check/', HealthCheck.as_view(), name='health-check'),
+    path('api/solicitudDocumento/', SolicitudDocumento.as_view(), name='solicitudDocumento/'),
     path('', include(router.urls))
 
 ]

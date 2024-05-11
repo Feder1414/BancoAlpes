@@ -46,7 +46,7 @@ class Cliente(models.Model):
     codigo_postal = models.CharField(max_length=10)
     pais = models.CharField(max_length=100)
     telefono = models.CharField(max_length=15)
-    documento = models.CharField(max_length=10) 
+    documento = models.CharField(max_length=10, unique=True) 
     email = models.EmailField()
     fecha_nacimiento = models.DateField()
 
